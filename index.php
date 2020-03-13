@@ -69,7 +69,7 @@ $tasks = $task->getAll();
                 <div class="card">
                     <img src="https://picsum.photos/200" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title"><?= h($task["title"]);?></h5>
+                        <h5 class="card-title"><?= h($task["title"])?></h5>
                         <p class="card-text">
                             <?= h($task["contents"]) ;?>
                         </p>
