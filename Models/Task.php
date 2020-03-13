@@ -22,6 +22,18 @@ class Task extends Model
         $stmt->execute($data);
     }
 
+
+    public function getTaskById($data)
+    {
+        var_dump($data);
+        $stmt = $this->db_manager->dbh->prepare('SELECT * FROM ' . $this->table.' WHERE id = ? ');
+        $stmt->execute($data);
+        $tasks = $stmt->fetch();
+
+        // return === 関数の呼び出し元に、値を返す
+        return $tasks;
+    }
+
     public function findByTitle($data)
     {
         $stmt = $this->db_manager->dbh->prepare('SELECT * FROM ' . $this->table . ' WHERE title LIKE ?');
