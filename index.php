@@ -13,13 +13,23 @@
  * 
  */
 // ファイルの読み込み
+
+session_start();
+
 require_once('Models/Task.php');
 require_once("./function.php");
-require_once('function.php');
 
 $task = new Task();
-$tasks = $task->getAll();
 
+if(isset($_GET['title'])){
+    $title=$_GET['title'];
+    $tasks=$task->findByTitle(["%$title%"]);
+}else if(isset($_GET['contents'])){
+    $contents=$_GET['contents'];
+    $tasks=$task->findByContents(["%$contents%"]);
+}else{
+    $tasks = $task->getAll();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,7 +84,7 @@ $tasks = $task->getAll();
                             <?= h($task["contents"]) ;?>
                         </p>
                         <div class="text-right d-flex justify-content-end">
-                            <a href="edit.php" class="btn text-success">EDIT</a>
+                            <a href="edit.php?id=<?= h($task['id']); ?>" class="btn text-success">EDIT</a>
                             <form action="delete.php" method="post">
                                 <input type="hidden" name="id" value="<?= h($task['id']);?>">
                                 <button type="submit" class="btn text-danger">DELETE</button>

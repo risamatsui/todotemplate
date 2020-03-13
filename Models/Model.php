@@ -45,7 +45,7 @@ class Model
         // return === 関数の呼び出し元に、値を返す
         return $tasks;
     }
-
+    
     public function delete($data)
     {
         // 削除処理
