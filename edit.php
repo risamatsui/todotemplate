@@ -1,5 +1,30 @@
 <?php
 
+require_once('Models/Task.php');
+require_once('function.php');
+
+//編集画面表示
+/**編集対象のデータを取ってきて
+ * ⇒特定の一つだけとってくる⇒id
+ * 
+ * 画面に表示する
+ */
+
+//更新の処理
+/**
+ * 
+ */
+
+$id=$_GET['id'];
+// var_dump($id);
+// die;
+$todo = new TASK();
+$task = $todo->getTaskById([$id]);
+// var_dump($task);
+// die;
+//データを取ってくるという行為は一緒BUT一つだけ選択して持ってくる。⇒コピーしてできちゃう！
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
