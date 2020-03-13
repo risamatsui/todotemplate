@@ -22,4 +22,19 @@ class Task extends Model
         $stmt->execute($data);
     }
 
+    public function findByTitle($data)
+    {
+        $stmt = $this->db_manager->dbh->prepare('SELECT * FROM ' . $this->table . ' WHERE title LIKE ?');
+        $stmt->execute($data);
+        $tasks = $stmt->fetchAll();
+        return $tasks;
+    }
+
+    public function findByContents($data)
+    {
+        $stmt = $this->db_manager->dbh->prepare('SELECT * FROM ' . $this->table . ' WHERE contents LIKE ?');
+        $stmt->execute($data);
+        $tasks = $stmt->fetchAll();
+        return $tasks;
+    }
 }
