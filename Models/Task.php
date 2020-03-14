@@ -22,6 +22,12 @@ class Task extends Model
         $stmt->execute($data);
     }
 
+    public function update($data)
+    {
+        $stmt = $this->db_manager->dbh->prepare( ' UPDATE ' . $this->table . ' SET title=?, contents=? WHERE id =? ');
+        $stmt->execute($data);
+    }
+
 
     public function getTaskById($data)
     {
